@@ -1,4 +1,4 @@
-// Mauvais maniere de faire
+// Mauvais exemple
 char	**ft_split(char *s, char c)
 {
 	int		i;
@@ -41,7 +41,7 @@ char	**ft_split(char *s, char c)
 	return (tab);
 }
 
-// Bonne maniere
+// Bon exemple
 
 int	count_words(char *str, char c)
 {
