@@ -1,45 +1,36 @@
 #include <stdio.h>
 
 // Mauvais Exemple
-int main(){
-    char    a[7] = "Ribalta";
-    char    b[5] = "Thomas";
-    int c = 18;
-    int d = 0;
-    int e = 0;
 
-    while (a[d])
-        d++;
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	unsigned char	*memoire;
+	size_t			index;
 
-    while (b[e])
-        e++;
-
-    if (c > 17)
-        printf("Vous vous appelez %s(%d) %s(%d). Comme vous avez %dans vous etes majeur en France.", a, d, b, e, c);
-    else
-        printf("Vous vous appelez %s(%d) %s(%d). Comme vous avez %dans vous etes mineur en France.", a, d, b, e, c);
-        
-    return (0);
+	memoire = (unsigned char *)s;
+	index = 0;
+	while (n > index)
+	{
+		if (memoire[index] == (unsigned char)c)
+			return ((void *)(memoire + index));
+		index++;
+	}
+	return (NULL);
 }
 
 // Bon exemple
-int main(){
-    char    nomFamille[7] = "Ribalta";
-    char    prenom[5] = "Thomas";
-    int age = 18;
-    int longueurDuNom = 0;
-    int longueurDuPrenom = 0;
+void	*ft_memchr(const void *voidStringMem, int characterChr, size_t sizeStringMem)
+{
+	unsigned char	*memoireChr;
+	size_t			indexChr;
 
-    while (nomFamille[longueurDuNom])
-        longueurDuNom++;
-
-    while (prenom[longueurDuPrenom])
-        longueurDuPrenom++;
-
-    if (age > 17)
-        printf("Vous vous appelez %s(%d) %s(%d). Comme vous avez %dans vous etes majeur en France.", nomFamille, longueurDuNom, prenom, longueurDuPrenom, age);
-    else
-        printf("Vous vous appelez %s(%d) %s(%d). Comme vous avez %dans vous etes mineur en France.", nomFamille, longueurDuNom, prenom, longueurDuPrenom, age);
-        
-    return (0);
+	memoireChr = (unsigned char *)voidStringMem;
+	indexChr = 0;
+	while (sizeStringMem > indexChr)
+	{
+		if (memoireChr[indexChr] == (unsigned char)characterChr)
+			return ((void *)(memoireChr + indexChr));
+		indexChr++;
+	}
+	return (NULL);
 }
