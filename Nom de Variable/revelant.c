@@ -1,21 +1,25 @@
 // Mauvais exemple
-int fonction1(char *m){
-    int i;
+int fonction1(char *m, char *m2){
+    int lm;
+    int lm2;
 
-    i = 0;
-    while (m[i]){
-        i++;
-    }
-    return (i);
+    lm = getLenWord(m);
+    lm2 = getLenWord(m2);
+    if (lm > lm2)
+        return (1);
+    else
+        return (0);
 }
 
 // Bon exemple
-int longueurDuMot(char *mot){
-    int nombreDeLettre;
+int getBiggestWord(char *firstWord, char *secondWord){
+    int lenFirstWord;
+    int lenSecondWord;
 
-    nombreDeLettre = 0;
-    while (mot[nombreDeLettre]){
-        nombreDeLettre++;
-    }
-    return (nombreDeLettre);
+    lenFirstWord = getLenWord(firstWord);
+    lenSecondWord = getLenWord(secondWord);
+    if (lenFirstWord > lenSecondWord)
+        return (1);
+    else
+        return (0);
 }
