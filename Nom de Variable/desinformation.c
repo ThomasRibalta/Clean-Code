@@ -10,7 +10,7 @@ typedef struct s_list
 } t_list;
 
 int main() {
-    t_list *listePrenoms = NULL;
+    t_list *arrayPrenoms = NULL;
     int nombrePrenoms = 0;
     char prenom[10];
 
@@ -23,12 +23,12 @@ int main() {
         t_list *nouveau = (t_list *)malloc(sizeof(t_list));
         strncpy(nouveau->prenom, prenom, sizeof(nouveau->prenom) - 1);
         nouveau->prenom[sizeof(nouveau->prenom) - 1] = '\0';
-        nouveau->next = listePrenoms;
-        listePrenoms = nouveau;
+        nouveau->next = arrayPrenoms;
+        arrayPrenoms = nouveau;
         nombrePrenoms++;
     }
     printf("\nListe des prénoms enregistrés : ");
-    t_list *current = listePrenoms;  
+    t_list *current = arrayPrenoms;  
     while (current != NULL) {
         printf("%s", current->prenom);
         
@@ -37,9 +37,9 @@ int main() {
         }  
         current = current->next;
     }
-    while (listePrenoms != NULL) {
-        t_list *temp = listePrenoms;
-        listePrenoms = listePrenoms->next;
+    while (arrayPrenoms != NULL) {
+        t_list *temp = arrayPrenoms;
+        arrayPrenoms = arrayPrenoms->next;
         free(temp);
     }
     return 0;
@@ -48,7 +48,7 @@ int main() {
 
 // Bon exemple
 int main() {
-    char listePrenoms[5][10];
+    char arrayPrenoms[5][10];
     int nombrePrenoms = 0;
     char prenom[10];
 
@@ -59,12 +59,12 @@ int main() {
         if (strcmp(prenom, "fin") == 0) {
             break;
         }
-        strcpy(listePrenoms[nombrePrenoms], prenom);
+        strcpy(arrayPrenoms[nombrePrenoms], prenom);
         nombrePrenoms++;
     }
     printf("\nListe des prénoms enregistrés :\n");
     for (int i = 0; i < nombrePrenoms; i++) {
-        printf("%d. %s\n", i + 1, listePrenoms[i]);
+        printf("%d. %s\n", i + 1, arrayPrenoms[i]);
     }
     return 0;
 }
