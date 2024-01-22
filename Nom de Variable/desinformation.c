@@ -1,6 +1,16 @@
 // Mauvais exemple
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct s_list
+{
+    char prenom[10];
+    struct s_list *next;
+} t_list;
+
 int main() {
-    char listePrenoms[1000];
+    t_list *listePrenoms = NULL;
     int nombrePrenoms = 0;
     char prenom[10];
 
@@ -8,16 +18,33 @@ int main() {
     while (nombrePrenoms < 10) {
         printf("Prénom %d : ", nombrePrenoms + 1);
         scanf("%s", prenom);
-        if (strcmp(prenom, "fin") == 0) {
+        if (strcmp(prenom, "fin") == 0)
             break;
-        }
-        ft_strjoin(listePrenoms, prenom);
-        ft_strjoin(listePrenoms, ", ");
+        t_list *nouveau = (t_list *)malloc(sizeof(t_list));
+        strncpy(nouveau->prenom, prenom, sizeof(nouveau->prenom) - 1);
+        nouveau->prenom[sizeof(nouveau->prenom) - 1] = '\0';
+        nouveau->next = listePrenoms;
+        listePrenoms = nouveau;
         nombrePrenoms++;
     }
-    printf("\nListe des prénoms enregistrés : %s\n", listePrenoms);
+    printf("\nListe des prénoms enregistrés : ");
+    t_list *current = listePrenoms;  
+    while (current != NULL) {
+        printf("%s", current->prenom);
+        
+        if (current->next != NULL) {
+            printf(", ");
+        }  
+        current = current->next;
+    }
+    while (listePrenoms != NULL) {
+        t_list *temp = listePrenoms;
+        listePrenoms = listePrenoms->next;
+        free(temp);
+    }
     return 0;
 }
+
 
 // Bon exemple
 int main() {
