@@ -3,8 +3,8 @@ int fonction1(char *m, char *m2){
     int lm;
     int lm2;
 
-    lm = getLenWord(m);
-    lm2 = getLenWord(m2);
+    lm = glw(m);
+    lm2 = glw(m2);
     if (lm > lm2)
         return (1);
     else
